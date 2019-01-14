@@ -1,0 +1,8 @@
+#1.Have total emissions from PM2.5 decreased in the United States from 1999 to 2008? Using the base plotting system, make a plot showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
+
+barplot((TotalE$Emissions), names.arg=TotalE$year,
+  xlab="Year",ylab="PM2.5 Emissions (Tons)",
+  main="Total PM2.5 Emissions"
+)
+dev.copy(png, file = "plot.1.png", height = 480, width = 480)
+dev.off()
