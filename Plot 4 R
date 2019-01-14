@@ -1,0 +1,13 @@
+#4. Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
+coal_SCC <- SCC[grep("*coal*|*Coal*",SCC$Short.Name),]$SCC
+coal_data <- NEI[NEI$SCC %in% coal_SCC,]
+
+suppressWarnings(comb <- aggregate(coal_data, list(coal_data$year), mean))
+library(ggplot2)
+ggplot(comb,aes(x = factor(year),y = Emissions)) +
+  geom_bar(stat="identity", fill ="#FF1111", width=0.8) +
+  labs(x="year", y=expression("Total PM"[2.5]*" Emission (Tons)")) + 
+  labs(title=expression("PM"[2.5]*" Combustion Emissions Across US from 1999-2008"))         
+
+dev.copy(png, file = "plot.4.png", height = 480, width = 480)
+dev.off()
